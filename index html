@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🏆 Lomba Kemerdekaan Digital</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="flag-stripe"></div>
+      <span class="badge">KARANG TARUNA</span>
+      <h1>🏆 Lomba Kemerdekaan<br><span>Digital</span></h1>
+      <p>Sistem Pengelolaan Pertandingan 17 Agustus</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- TAB NAVIGATION -->
+    <nav class="tabs" role="tablist">
+      <button class="tab-btn active" onclick="switchTab('futsal')" role="tab" id="tab-futsal">
+        ⚽ Futsal
+      </button>
+      <button class="tab-btn" onclick="switchTab('basket')" role="tab" id="tab-basket">
+        🏀 Basket
+      </button>
+    </nav>
+
+    <!-- FUTSAL SECTION -->
+    <section class="section active" id="futsal">
+      <div class="section-header">
+        <h2>⚽ Futsal</h2>
+        <span class="team-count" id="futsal-count">0 Tim</span>
+      </div>
+
+      <div class="form-card">
+        <h3>Daftarkan Tim Baru</h3>
+        <div class="form-group">
+          <label>Nama Tim</label>
+          <input type="text" id="futsal-team-name" placeholder="Contoh: Garuda FC" />
+        </div>
+        <div class="form-group">
+          <label>Nama Pemain (pisahkan dengan koma)</label>
+          <input type="text" id="futsal-players" placeholder="Budi, Andi, Reza, Doni, Ahmad" />
+        </div>
+        <button class="btn btn-primary" onclick="addTeam('futsal')">
+          + Daftarkan Tim
+        </button>
+      </div>
+
+      <div class="team-list" id="futsal-team-list"></div>
+
+      <div class="bracket-section">
+        <div class="bracket-header">
+          <h3>🗂️ Bagan Pertandingan</h3>
+          <button class="btn btn-secondary" onclick="generateBracket('futsal')">
+            🎲 Buat Bagan Acak
+          </button>
+        </div>
+        <div class="bracket" id="futsal-bracket">
+          <p class="empty-msg">Tambahkan tim lalu klik "Buat Bagan Acak"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BASKET SECTION -->
+    <section class="section" id="basket">
+      <div class="section-header">
+        <h2>🏀 Basket</h2>
+        <span class="team-count" id="basket-count">0 Tim</span>
+      </div>
+
+      <div class="form-card">
+        <h3>Daftarkan Tim Baru</h3>
+        <div class="form-group">
+          <label>Nama Tim</label>
+          <input type="text" id="basket-team-name" placeholder="Contoh: Rajawali Squad" />
+        </div>
+        <div class="form-group">
+          <label>Nama Pemain (pisahkan dengan koma)</label>
+          <input type="text" id="basket-players" placeholder="Rizki, Fajar, Hendra, Bayu, Surya" />
+        </div>
+        <button class="btn btn-primary" onclick="addTeam('basket')">
+          + Daftarkan Tim
+        </button>
+      </div>
+
+      <div class="team-list" id="basket-team-list"></div>
+
+      <div class="bracket-section">
+        <div class="bracket-header">
+          <h3>🗂️ Bagan Pertandingan</h3>
+          <button class="btn btn-secondary" onclick="generateBracket('basket')">
+            🎲 Buat Bagan Acak
+          </button>
+        </div>
+        <div class="bracket" id="basket-bracket">
+          <p class="empty-msg">Tambahkan tim lalu klik "Buat Bagan Acak"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCOREBOARD -->
+    <section class="scoreboard-section">
+      <h2>🎯 Papan Skor Live</h2>
+
+      <div class="scoreboard">
+        <div class="team-score">
+          <input type="text" class="team-name-input" id="score-team-a" value="Tim A" />
+          <div class="score" id="score-a">0</div>
+          <div class="score-btns">
+            <button class="score-btn plus" onclick="updateScore('A', 1)">+1</button>
+            <button class="score-btn minus" onclick="updateScore('A', -1)">−1</button>
+          </div>
+        </div>
+
+        <div class="vs-block">
+          <span class="vs">VS</span>
+          <button class="btn-reset" onclick="resetScore()">↺ Reset</button>
+        </div>
+
+        <div class="team-score">
+          <input type="text" class="team-name-input" id="score-team-b" value="Tim B" />
+          <div class="score" id="score-b">0</div>
+          <div class="score-btns">
+            <button class="score-btn plus" onclick="updateScore('B', 1)">+1</button>
+            <button class="score-btn minus" onclick="updateScore('B', -1)">−1</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>🇮🇩 Lomba Kemerdekaan Digital — Karang Taruna · Data tidak tersimpan setelah refresh</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
